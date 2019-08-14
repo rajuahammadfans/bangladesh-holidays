@@ -16,7 +16,7 @@ var BASE = "https://calendarific.com/api/v2/holidays?",
     KEY = "f9fb2d2998ab84513a40dead58b9f071a645530c";
 
 function bdHolidays() {
-    fetch(`${BASE}api_key=${KEY}&country=BD&year=2018`)
+    fetch(`${BASE}api_key=${KEY}&country=BD&year=2019`)
         .then(response => response.json())
         .then(data => {
             var holidaysList = data.response.holidays;
