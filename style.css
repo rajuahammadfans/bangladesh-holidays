@@ -1,1 +1,33 @@
-.table tr {white-space: no-wrap}
+.table tr {
+    white-space: nowrap;
+    font-size: 17px;
+}
+
+.table td {
+    vertical-align: middle;
+}
+
+/* .holiday-item {
+    opacity: 0.6;
+}
+
+.holiday-item.gone {
+    opacity: 0.2;
+}
+
+.holiday-item.running {
+    opacity: 1;
+} */
+
+.holiday-title {
+    font-size: 18px;
+    width: 70%;
+    font-weight: 600;
+}
+
+.holiday-desc {
+    display: block;
+    font-size: 80%;
+    white-space: normal;
+    font-weight: normal;
+}
