@@ -46,9 +46,9 @@ function bdHolidays() {
                 // Insert Data On HTML
                 holidayTitle.innerHTML = elem.name;
                 holidayDesc.innerHTML = elem.description;
-                d = new Date(`${elem.date.datetime.year}-${elem.date.datetime.month}-${elem.date.datetime.day}`);
-                holidayDay.innerHTML = Days[d.getDay()];
-                holidayDate.innerHTML = `${Months[d.getMonth()]} ${elem.date.datetime.day}`;
+                let dh = new Date(elem.date.iso);
+                holidayDay.innerHTML = Days[dh.getDay()];
+                holidayDate.innerHTML = `${Months[dh.getMonth()]} ${elem.date.datetime.day}`;
 
                 // Append Element
                 appendElem(tr, holidayTitle);
@@ -56,6 +56,14 @@ function bdHolidays() {
                 appendElem(tr, holidayDay);
                 appendElem(tr, holidayDate);
                 appendElem(holidayContent, tr);
+
+                // if (dh.getTime() > d.getTime()) {
+                //     console.log(`Dh: ${Months[dh.getMonth()]} ${elem.date.datetime.day}`);
+                // } else {
+                //     console.log(`D: ${Months[d.getMonth()]} ${elem.date.datetime.day}`);
+                // }
+
+                console.log(elem.date.iso)
             });
         })
 }
