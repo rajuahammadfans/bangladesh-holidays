@@ -61,3 +61,17 @@ function bdHolidays() {
 }
 
 bdHolidays();
+
+
+// Git Fork Button
+function gitFork(url) {
+    var anchorBtn = document.createElement('a');
+    anchorBtn.href = url;
+    var btnImg = document.createElement('img');
+    btnImg.src = 'https://s3.amazonaws.com/github/ribbons/forkme_right_red_aa0000.png';
+    anchorBtn.setAttribute('style', 'position: fixed;top: 0;right: 0;z-index: 999;');
+    anchorBtn.appendChild(btnImg);
+    document.querySelector("body").appendChild(anchorBtn);
+}
+
+gitFork('https://github.com/rajuahammadfanz/bangladesh-holidays');
