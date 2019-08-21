@@ -1,5 +1,6 @@
 var holidayContent = document.querySelector(".table-body-content"),
-    heading = document.querySelector(".main-title");
+    heading = document.querySelector(".main-title"),
+    nextHoliday = document.querySelector(".next-holiday");
 
 // Create Node Element
 function createElem(tag) {
@@ -14,8 +15,13 @@ function appendElem(parent, elem) {
 // Additional Variable
 var d = new Date(),
     Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-    Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'];
+    Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+    day = d.getDate() < 10 ? day = `0${d.getDate()}` : d.getDate(),
+    month = d.getMonth() < 10 ? month = `0${d.getMonth()+1}` : d.getMonth() + 1,
+    today = `${d.getFullYear()}-${month}-${day}`,
+    allHolidayDate = [];
 
+// Heading
 heading.innerHTML = `Bangladesh Holidays in ${d.getFullYear()}`;
 
 // API Info
@@ -56,15 +62,13 @@ function bdHolidays() {
                 appendElem(tr, holidayDay);
                 appendElem(tr, holidayDate);
                 appendElem(holidayContent, tr);
-
-                // if (dh.getTime() > d.getTime()) {
-                //     console.log(`Dh: ${Months[dh.getMonth()]} ${elem.date.datetime.day}`);
-                // } else {
-                //     console.log(`D: ${Months[d.getMonth()]} ${elem.date.datetime.day}`);
-                // }
-
-                console.log(elem.date.iso)
+                allHolidayDate[index] = elem.date.iso;
             });
+
+            // Find Next Holiday
+            var holidateNext = allHolidayDate.find(dateSring => dateSring > today),
+                nextDate = new Date(holidateNext);
+            nextHoliday.innerHTML = `<span>Next Holiday:</span> ${Months[nextDate.getMonth()]} ${nextDate.getDate()}`;
         })
 }
 

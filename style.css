@@ -31,3 +31,13 @@
     white-space: normal;
     font-weight: normal;
 }
+
+.next-holiday{
+    color: #f00;
+    font-size: 22px;
+    margin-top: 35px;
+}
+
+.next-holiday span{
+    color: #222;
+}
