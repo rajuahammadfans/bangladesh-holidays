@@ -16,8 +16,8 @@ function appendElem(parent, elem) {
 var d = new Date(),
     Days = ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
     Months = ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-    day = d.getDate() < 10 ? day = `0${d.getDate()}` : d.getDate(),
-    month = d.getMonth() < 10 ? month = `0${d.getMonth()+1}` : d.getMonth() + 1,
+    day = d.getDate() < 10 ? `0${d.getDate()}` : d.getDate(),
+    month = d.getMonth() < 9 ? `0${d.getMonth()+1}` : d.getMonth() + 1,
     today = `${d.getFullYear()}-${month}-${day}`,
     allHolidayDate = [];
 
@@ -43,7 +43,7 @@ function bdHolidays() {
                     holidayDesc = createElem('span');
 
                 // Add Class Name 
-                tr.className = 'holiday-item';
+                tr.className = `holiday-item ${elem.date.iso.slice(0,10)}`;
                 holidayTitle.className = 'holiday-title';
                 holidayDesc.className = 'holiday-desc';
                 holidayDay.className = 'holiday-weekday';
@@ -69,6 +69,16 @@ function bdHolidays() {
             var holidateNext = allHolidayDate.find(dateSring => dateSring > today),
                 nextDate = new Date(holidateNext);
             nextHoliday.innerHTML = `<span>Next Holiday:</span> ${Months[nextDate.getMonth()]} ${nextDate.getDate()}`;
+            
+            // Next Holiday Background Color
+            var notes = null;
+            for (var i = 0; i < holidayContent.childNodes.length; i++) {
+                if (holidayContent.childNodes[i].className == `holiday-item ${holidateNext}`) {
+                    notes = holidayContent.childNodes[i];
+                    break;
+                }        
+            }
+            notes.setAttribute("style", "color:#fefefe; background: #731212");
         })
 }
 
