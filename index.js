@@ -26,10 +26,11 @@ heading.innerHTML = `Bangladesh Holidays in ${d.getFullYear()}`;
 
 // API Info
 var BASE = "https://calendarific.com/api/v2/holidays?",
-    KEY = "f9fb2d2998ab84513a40dead58b9f071a645530c";
+    KEY = "f9fb2d2998ab84513a40dead58b9f071a645530c"
+    CORS_URL = "https://cors-anywhere.herokuapp.com/";
 
 function bdHolidays() {
-    fetch(`${BASE}api_key=${KEY}&country=BD&year=${d.getFullYear()}`)
+    fetch(`${CORS_URL + BASE}api_key=${KEY}&country=BD&year=${d.getFullYear()}`)
         .then(response => response.json())
         .then(data => {
             var holidaysList = data.response.holidays;
@@ -96,4 +97,4 @@ function gitFork(url) {
     document.querySelector("body").appendChild(anchorBtn);
 }
 
-gitFork('https://github.com/rajuahammadfanz/bangladesh-holidays');
+gitFork('https://github.com/rajuahammadfans/bangladesh-holidays');
